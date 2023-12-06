@@ -1,0 +1,64 @@
+1. Container Engines (high level)
+역할:
+Taking user input
+Interacting with an orchestrator or orchestration platform
+Loading the Container Image file (typically from a cloud service, either public or private)
+Preparing to run the container
+구성 요소 예:
+Docker (containerd): the most popular engine offering a full suite of features as its own CLI (command line interface - Docker CLI) 
+CRI-O - an open source version of the Kubernetes Container Runtime Initiative. It serves as a lightweight alternative to Docker and RKT and allows any CRI compliant low level runtime (such as runc) to work with Kubernetes. 
+RKT - an application container engine developed for modern production cloud-native environments. It features a pod-native approach and  pluggable execution environment. Used primarily in red hat Linux environments.
+
+2. Container Runtime (low level)
+containerd, runC, Crun
+
+3. 표준
+OCI(Open Container Initiative)
+CRI(Container Runtime Initiative)
+CNCF(Cloud Native Computing Foundation)
+
+4. Major Players
+Docker: Docker Engine, Docker Swarm, Docker Compose, Docker Desktop
+Kubernetes
+
+5. Kubernetes
+2014년에 시작된 Kubernetes는 가장 널리 사용되는 컨테이너 오케스트레이션 플랫폼입니다. 
+컨테이너화된 애플리케이션의 배포, 확장, 관리 및 조정을 자동화하도록 설계되었습니다. 
+소규모 애플리케이션을 실행하든 크고 복잡한 분산 시스템을 운영하든 컨테이너 기반 워크로드를 배포하고 관리하기 위한 강력하고 유연한 플랫폼을 제공합니다. 
+특히 클라우드 네이티브 및 마이크로서비스 기반 애플리케이션 아키텍처에서 널리 사용됩니다.
+
+6. Kubernetes 특정 용어:
+Cluster
+Node
+Worker Node
+Pod
+Control Plane
+Secret: storing sensitive information
+Volume
+Namespace: virtual cluster
+Service: a set of pods
+
+7. Kubernetes Service Type
+clusterIP: Exposes services only inside the cluster (default).
+Loadbalancer: Exposes the service with a cloud provider's load balancer.
+nodePort: Exposes services at the specified port on all nodes.
+externalName: Maps a service to endpoints completely outside of the cluster.
+
+8. Kubernetes Controllers
+replicaSet: Ensures that a specified number of pod replicas are running at all times. It's used for scaling and load balancing.
+Deployment: A higher-level resource that manages ReplicaSets and provides declarative updates to applications. It enables rolling updates and rollbacks.
+statefulSet: Like a deployment, but for fixed (non-interchangeable) underlying pods.
+daemonSet: Manages pods that need to run on all/multiple nodes.
+job: Manages a set of pods that run to completion and also tracks the overall progress. 
+
+9. Kubernetes Master Node
+kube-apiserver:  Kubernetes API
+kube-controller-manager: Part of the control plane that manages controller processes to regulate the state of the system.
+kube-scheduler: Part of the control plane that assigns pods to worker nodes based on resource requirements and constraints.
+etcd: A distributed key-value store that stores the cluster's configuration data and state information.
+cloud-controller-manager(optional): An optional control plane component that embeds cloud specific control logic and lets you link your cluster into your cloud provider's API.
+
+10. Kubernetes Node Components
+kubelet: An agent that runs on each worker node and communicates with the master node. It manages containers on the node.
+kube-proxy: A network proxy that runs on each node and maintains network rules for communication to and from pods.
+Container Runtime: A fundamental component that empowers Kubernetes to run containers effectively. It is responsible for managing the execution and lifecycle of containers.
